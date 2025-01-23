@@ -178,10 +178,31 @@ footer {
     /* background-color: #f1f1f1; Optional: Adjust background color */
 }
 
-img.profile{
+img.profile {
     width: 95%;
-    max-height: 400px;
+    max-width: 400px;  /* Ensures it doesn't get too large */
+    height: auto;  /* Maintain aspect ratio */
     border-radius: 4%;
-    border-color: #333;
-    border: 2px 2px 2px 2px;
+    border: 2px solid #333;
+    object-fit: contain;
+    object-position: center top;
+    display: block;  /* Removes unwanted spacing */
+    margin: 0 auto;  /* Centers the image */
+}
+
+/* Medium screens (Tablets) */
+@media (max-width: 768px) {
+    img.profile {
+        width: 85%;
+        max-width: 350px;
+    }
+}
+
+/* Small screens (Mobile Devices) */
+@media (max-width: 480px) {
+    img.profile {
+        width: 90%;
+        max-width: 300px;
+        border-radius: 8%;
+    }
 }
