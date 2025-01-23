@@ -43,7 +43,7 @@ header {
     flex-wrap: nowrap; */
     justify-content: space-between;
     align-items: stretch; /* Ensures equal height */
-    padding: 20px;
+    padding: 60px;
     max-width: 1440px;
     margin: auto;
 } 
