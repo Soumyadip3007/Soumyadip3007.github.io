@@ -31,25 +31,25 @@ header {
 }
 
 .container {
-    display: flex;
-    flex-wrap: nowrap;
+    /* display: flex;
+    flex-wrap: nowrap; */
     justify-content: space-between;
     align-items: stretch; /* Ensures equal height */
     padding: 20px;
     max-width: 1440px;
     margin: auto;
-}
+} 
 
 
-main {
+/* main {
     flex: 2;
     max-width: 65%;
-}
+} */
 
-aside {
+/* aside {
     flex: 1;
     max-width: 30%;
-}
+} */
 
 .icons {
     display: flex;
@@ -176,4 +176,12 @@ footer {
     text-align: center;
     padding: 10px 0;
     /* background-color: #f1f1f1; Optional: Adjust background color */
+}
+
+img.profile{
+    width: 95%;
+    max-height: 400px;
+    border-radius: 4%;
+    border-color: #333;
+    border: 2px 2px 2px 2px;
 }
