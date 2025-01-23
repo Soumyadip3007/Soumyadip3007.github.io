@@ -1,62 +1,179 @@
+/* style.css */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     text-align: center;
 }
 
 header {
-    background: #333;
-    color: white;
+    background: #212529;
+    /* color: white; */
     padding: 20px;
 }
 
-nav ul {
+.nav-menu {
     list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 15px;
+.nav-menu li {
+    margin: 10px;
 }
 
-nav a {
+.nav-menu a {
     color: white;
     text-decoration: none;
 }
 
-.intro, .tools, .news {
-    padding: 40px;
+.container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch; /* Ensures equal height */
+    padding: 20px;
+    max-width: 1440px;
+    margin: auto;
 }
 
-.icons img {
-    width: 50px;
-    margin: 10px;
+
+main {
+    flex: 2;
+    max-width: 65%;
 }
+
+aside {
+    flex: 1;
+    max-width: 30%;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+
 
 footer {
     background: #333;
     color: white;
     padding: 10px;
     margin-top: 20px;
-}
-/* Dark Mode */
-body.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
+    text-align: center;
 }
 
-body.dark-mode header, body.dark-mode footer {
-    background-color: #1f1f1f;
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    main, aside {
+        max-width: 100%;
+    }
 }
 
-body.dark-mode a {
-    color: #00bfff;
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
 }
 
-body.dark-mode .project, body.dark-mode .news {
-    background: #222;
-    padding: 20px;
-    border-radius: 10px;
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        background: #333;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .nav-menu.show {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+    }
+}
+
+ .bi {
+    font-size: 1.5rem; /* Adjust to your desired default size */
+    color: #212529;
+  }
+  .bi:hover {
+    color: #0a4b8c;
+  }
+
+  /* Increase size on medium screens (e.g., tablets) */
+  @media (min-width: 768px) {
+    .bi {
+      font-size: 2rem;
+    }
+  }
+
+  /* Increase size on larger screens (e.g., desktops) */
+  @media (min-width: 1024px) {
+    .bi {
+      font-size: 2.2rem;
+    }
+  }
+
+  .icons img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    object-fit: cover;
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 768px) {
+    .icons img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 1024px) {
+    .icons img {
+        width: 55px;
+        height: 55px;
+    }
+}
+
+/* Extra-large screens
+@media (min-width: 1440px) {
+    .icons img {
+        width: 70px;
+        height: 70px;
+    }
+} */
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    /* background-color: #f1f1f1; Optional: Adjust background color */
 }
