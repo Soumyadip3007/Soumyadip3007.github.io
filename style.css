@@ -44,7 +44,7 @@ html, body {
     flex-wrap: nowrap; */
     justify-content: space-between;
     align-items: stretch; /* Ensures equal height */
-    padding: 5px 5px 60px 5px;
+    padding: 15px 15px 60px 15px;
     max-width: 1440px;
     margin: auto;
 } 
