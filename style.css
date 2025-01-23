@@ -15,11 +15,12 @@ html, body {
     padding: 20px;
     overflow: auto;
 }
-header {
+/* header {
     background: #212529;
-    /* color: white; */
+    color: white; 
     padding: 20px;
 }
+*/ 
 
 .nav-menu {
     list-style: none;
@@ -43,7 +44,7 @@ header {
     flex-wrap: nowrap; */
     justify-content: space-between;
     align-items: stretch; /* Ensures equal height */
-    padding: 60px;
+    padding: 5px 5px 60px 5px;
     max-width: 1440px;
     margin: auto;
 } 
