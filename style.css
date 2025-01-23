@@ -1,12 +1,20 @@
 /* style.css */
-body {
+html, body {
+
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-align: center;
+    height: 100%;
+    margin: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
-
+.main-content {
+    padding: 20px;
+    overflow: auto;
+}
 header {
     background: #212529;
     /* color: white; */
@@ -63,10 +71,12 @@ header {
 
 
 footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     background: #333;
     color: white;
     padding: 10px;
-    margin-top: 20px;
     text-align: center;
 }
 
@@ -168,15 +178,6 @@ footer {
         height: 70px;
     }
 } */
-
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-    /* background-color: #f1f1f1; Optional: Adjust background color */
-}
 
 img.profile {
     width: 95%;
