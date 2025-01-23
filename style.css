@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background: #333;
+    color: white;
+    padding: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.intro, .tools, .news {
+    padding: 40px;
+}
+
+.icons img {
+    width: 50px;
+    margin: 10px;
+}
+
+footer {
+    background: #333;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+}
+/* Dark Mode */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode header, body.dark-mode footer {
+    background-color: #1f1f1f;
+}
+
+body.dark-mode a {
+    color: #00bfff;
+}
+
+body.dark-mode .project, body.dark-mode .news {
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+}
