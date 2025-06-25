@@ -43,55 +43,137 @@
 
 
 // Wait for the document to load before running scripts
-document.addEventListener("DOMContentLoaded", function () {
+// 🌙 Dark Mode Toggle Functionality
+function toggleDarkMode() {
+    const body = document.body;
+    const darkModeToggle = document.getElementById('darkModeToggle');
 
-    // --- Dark Mode Toggle ---
-    const toggleButton = document.createElement("button");
-    toggleButton.innerText = "🌙";
-    // Add the class for styling from style.css
-    toggleButton.classList.add("dark-mode-toggle");
-    document.body.appendChild(toggleButton);
+    body.classList.toggle('dark-mode');
+    const isDark = body.classList.contains('dark-mode');
 
-    // Function to set the button text based on mode
-    const setButtonText = () => {
-        if (document.body.classList.contains("dark-mode")) {
-            toggleButton.innerText = "☀️";
-        } else {
-            toggleButton.innerText = "🌙";
+    // Update button text
+    darkModeToggle.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+
+    // Save preference to localStorage
+    localStorage.setItem('darkMode', isDark);
+
+    // Add smooth transition effect
+    body.style.transition = 'all 0.3s ease';
+}
+
+// 🌗 Load saved theme preference
+function loadThemePreference() {
+    const savedDarkMode = localStorage.getItem('darkMode');
+    const darkModeToggle = document.getElementById('darkModeToggle');
+
+    if (savedDarkMode === 'true') {
+        document.body.classList.add('dark-mode');
+        if (darkModeToggle) {
+            darkModeToggle.textContent = '☀️ Light Mode';
         }
-    };
-
-    toggleButton.addEventListener("click", function () {
-        document.body.classList.toggle("dark-mode");
-        // Save the user's preference to localStorage
-        localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
-        setButtonText();
-    });
-
-    // Apply dark mode if previously enabled
-    if (localStorage.getItem("darkMode") === "true") {
-        document.body.classList.add("dark-mode");
     }
-    // Set the initial button text
-    setButtonText();
+}
 
+// 🧭 Smooth scrolling for navigation links
+function initSmoothScrolling() {
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
 
-    // --- Smooth Scrolling for internal links ---
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
+    navLinks.forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const targetElement = document.querySelector(this.getAttribute("href"));
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: "smooth"
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
+
+            if (target) {
+                const headerOffset = 100;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
                 });
             }
         });
     });
+}
 
-    // --- Update footer year dynamically ---
-    const yearSpan = document.getElementById("year");
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
+// 📌 Active navigation highlighting
+function highlightActiveNavigation() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+    function updateActiveNav() {
+        let currentSection = '';
+
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            const sectionHeight = section.offsetHeight;
+
+            if (sectionTop <= 150 && sectionTop + sectionHeight > 150) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSection}`) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateActiveNav);
+    updateActiveNav(); // Initial call
+}
+
+// 📬 Form validation and simulated submission
+function initContactForm() {
+    const contactForm = document.getElementById('contactForm');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(contactForm);
+            const name = formData.get('name').trim();
+            const email = formData.get('email').trim();
+            const message = formData.get('message').trim();
+
+            // Basic validation
+            if (!name || !email || !message) {
+                alert("Please fill in all fields before submitting.");
+                return;
+            }
+
+            // Basic email format check
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            // Simulated success message (replace with backend logic if needed)
+            alert("Thank you for your message! I'll get back to you soon.");
+            contactForm.reset();
+        });
+    }
+}
+
+// 🚀 Initialize all functionality when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    loadThemePreference();
+    initSmoothScrolling();
+    highlightActiveNavigation();
+    initContactForm();
+
+    // Bind dark mode toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', toggleDarkMode);
     }
 });
+// Add smooth transition effect for dark mode toggle
+document.body.style.transition = 'all 0.3s ease';
+// Add event listener for dark mode toggle button
+const darkModeToggle = document.getElementById('darkModeToggle');
