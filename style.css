@@ -237,7 +237,17 @@ h2::after {
     color: white;
     transform: translateY(-2px);
 }
+.btn-tertiary {
+    background: #f3f3f3;
+    color: #333;
+    border: 2px solid #ccc;
+}
 
+.btn-tertiary:hover {
+    background: #e2e2e2;
+    color: #000;
+    transform: translateY(-2px);
+}
 .cta-buttons {
     margin-top: 30px;
     text-align: center;
